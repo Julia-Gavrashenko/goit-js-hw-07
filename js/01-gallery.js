@@ -3,7 +3,13 @@ import { galleryItems } from "./gallery-items.js";
 
 console.log(galleryItems);
 
-createGalleryMarkup(galleryItems);
+const galleryMarkup = createGalleryMarkup(galleryItems);
+
+const galleryContainer = document.querySelector(".gallery");
+
+galleryContainer.insertAdjacentHTML("beforeend", galleryMarkup)
+
+
 
 function createGalleryMarkup(galleryItems) {
   const markup = galleryItems
@@ -22,7 +28,7 @@ function createGalleryMarkup(galleryItems) {
 </div>
     `;
     })
-    .join(``);
+    .join("");
 
   console.log(markup);
 }
