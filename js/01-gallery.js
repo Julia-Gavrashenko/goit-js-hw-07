@@ -9,6 +9,12 @@ const galleryContainer = document.querySelector(".gallery");
 
 galleryContainer.insertAdjacentHTML("beforeend", galleryMarkup);
 
+galleryContainer.addEventListener(`click`, onImgClick);
+
+
+
+
+
 function createGalleryMarkup(items) {
   const markup = items
     .map(({ preview, original, description }) => {
@@ -27,6 +33,26 @@ function createGalleryMarkup(items) {
     `;
     })
     .join("");
+  
+  return markup;
 
   console.log(markup);
+}
+
+
+function onImgClick(event) {
+  event.preventDefault();
+
+  if (!event.target.classList.contains("gallery__image")) {
+    return;
+  }
+
+  const modal = basicLightbox.create(`
+`)
+
+
+
+
+
+  console.log(event.target);
 }
