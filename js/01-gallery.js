@@ -1,8 +1,6 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
-console.log(galleryItems);
-
 const galleryMarkup = createGalleryMarkup(galleryItems);
 
 const galleryContainer = document.querySelector(".gallery");
@@ -31,8 +29,6 @@ function createGalleryMarkup(items) {
     .join("");
 
   return markup;
-
-  console.log(markup);
 }
 
 function onImgOpenModal(event) {
