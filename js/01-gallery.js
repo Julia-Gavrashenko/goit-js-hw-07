@@ -9,11 +9,7 @@ const galleryContainer = document.querySelector(".gallery");
 
 galleryContainer.insertAdjacentHTML("beforeend", galleryMarkup);
 
-galleryContainer.addEventListener(`click`, onImgClick);
-
-
-
-
+galleryContainer.addEventListener(`click`, onImgOpenModal);
 
 function createGalleryMarkup(items) {
   const markup = items
@@ -33,26 +29,29 @@ function createGalleryMarkup(items) {
     `;
     })
     .join("");
-  
+
   return markup;
 
   console.log(markup);
 }
 
-
-function onImgClick(event) {
+function onImgOpenModal(event) {
   event.preventDefault();
 
   if (!event.target.classList.contains("gallery__image")) {
     return;
   }
+  const instance = basicLightbox.create(`
+  <img src = "${event.target.dataset.source}">
+`);
+  instance.show();
 
-  const modal = basicLightbox.create(`
-`)
+  window.addEventListener(`keydown`, onImgCloseModal);
 
-
-
-
-
-  console.log(event.target);
+  function onImgCloseModal(event) {
+    if (event.code === "Escape") {
+      instance.close();
+      window.removeEventListener(`keydown`, onImgCloseModal);
+    }
+  }
 }
